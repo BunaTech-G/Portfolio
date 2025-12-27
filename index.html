@@ -348,11 +348,10 @@
                 );
 
                 revealEls.forEach((el) => revealIO.observe(el));
-                return;
+            } else {
+                // Fallback: reveal everything.
+                revealEls.forEach((el) => el.classList.add('is-visible'));
             }
-
-            // Fallback: reveal everything.
-            revealEls.forEach((el) => el.classList.add('is-visible'));
 
             // Filet de sécurité: si quelque chose bloque, tout afficher après 1s.
             setTimeout(() => {
