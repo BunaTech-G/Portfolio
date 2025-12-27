@@ -9,6 +9,14 @@
 </head>
 <body>
 
+    <div class="splash" role="presentation" aria-hidden="true">
+        <div class="splash-inner">
+            <span class="splash-badge">Portfolio</span>
+            <h1 class="splash-title">Ousmane Sidibe</h1>
+            <p class="splash-sub">Développement • Réseaux • Cybersécurité</p>
+        </div>
+    </div>
+
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <header class="site-header">
@@ -31,7 +39,7 @@
         </div>
     </header>
 
-    <main id="contenu">
+    <main id="contenu" class="page">
         <section id="accueil" class="hero" aria-label="Introduction">
             <div class="container hero-grid">
                 <div class="hero-copy reveal">
@@ -135,7 +143,7 @@
                 </header>
 
                 <div class="grid">
-                    <article class="project-card reveal">
+                    <article class="project-card reveal" data-project="p1">
                         <h3 class="project-title">Projet 1 — Portfolio</h3>
                         <p class="project-text">One-page pour me présenter, avec design dark + accent orange.</p>
                         <p class="hint">Ce que j’ai appris : structurer une page, responsive, micro-animations.</p>
@@ -144,12 +152,13 @@
                             <span class="tag">CSS</span>
                         </div>
                         <div class="project-links">
-                            <a class="link" href="#">Démo</a>
-                            <a class="link" href="#">Code</a>
+                            <a class="link" href="#" data-link="demo">Démo (à renseigner)</a>
+                            <a class="link" href="#" data-link="code">Code (à renseigner)</a>
+                            <button class="link as-button" data-open-modal="p1">Détails</button>
                         </div>
                     </article>
 
-                    <article class="project-card reveal">
+                    <article class="project-card reveal" data-project="p2">
                         <h3 class="project-title">Projet 2 — Analyse réseau</h3>
                         <p class="project-text">Mini exercice de capture/analyse de trafic (à détailler : contexte, objectifs, résultats).</p>
                         <p class="hint">Ce que j’ai appris : méthodo d’analyse, outils (ex: Wireshark), bonnes pratiques.</p>
@@ -158,12 +167,13 @@
                             <span class="tag">Cybersécurité</span>
                         </div>
                         <div class="project-links">
-                            <a class="link" href="#">Capture</a>
-                            <a class="link" href="#">Notes</a>
+                            <a class="link" href="#" data-link="capture">Capture (à renseigner)</a>
+                            <a class="link" href="#" data-link="notes">Notes (à renseigner)</a>
+                            <button class="link as-button" data-open-modal="p2">Détails</button>
                         </div>
                     </article>
 
-                    <article class="project-card reveal">
+                    <article class="project-card reveal" data-project="p3">
                         <h3 class="project-title">Projet 3 — Script/outil</h3>
                         <p class="project-text">Automatisation simple (tri de fichiers, parsing, ou petit outil CLI).</p>
                         <p class="hint">Ce que j’ai appris : structurer un script, gérer les entrées/sorties, documenter.</p>
@@ -172,7 +182,8 @@
                             <span class="tag">CLI</span>
                         </div>
                         <div class="project-links">
-                            <a class="link" href="#">Code</a>
+                            <a class="link" href="#" data-link="code">Code (à renseigner)</a>
+                            <button class="link as-button" data-open-modal="p3">Détails</button>
                         </div>
                     </article>
                 </div>
@@ -231,9 +242,33 @@
         </div>
     </footer>
 
+    <div class="modal" data-modal>
+        <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" type="button" aria-label="Fermer" data-close-modal>×</button>
+            <p class="modal-eyebrow" id="modal-eyebrow">Projet</p>
+            <h3 class="modal-title" id="modal-title">Titre du projet</h3>
+            <p class="modal-sub" id="modal-sub">Objectif et contexte</p>
+            <div class="modal-body" id="modal-body">
+                <p>Chargement…</p>
+            </div>
+            <div class="modal-links" id="modal-links"></div>
+        </div>
+    </div>
+
     <script>
         (function () {
             document.documentElement.classList.add('reveal-ready');
+
+            // --- Splash intro ---
+            const splash = document.querySelector('.splash');
+            const page = document.querySelector('.page');
+            if (splash && page) {
+                setTimeout(() => {
+                    splash.classList.add('is-hide');
+                    page.classList.add('is-visible');
+                    setTimeout(() => splash.remove(), 900);
+                }, 1200);
+            }
 
             const navLinks = Array.from(document.querySelectorAll('.nav .nav-link'))
                 .filter((a) => a.getAttribute('href') && a.getAttribute('href').startsWith('#'));
@@ -324,6 +359,103 @@
                 document.documentElement.classList.remove('reveal-ready');
                 revealEls.forEach((el) => el.classList.add('is-visible'));
             }, 1000);
+
+            // --- Modale projets ---
+            const projectData = {
+                p1: {
+                    eyebrow: 'Projet 1 — Portfolio',
+                    title: 'Portfolio one-page',
+                    sub: 'Design dark + accent orange, responsive, animations légères.',
+                    body: [
+                        'Objectif : présenter mon profil (Bac Pro CIEL), mes liens et mes projets.',
+                        'Stack : HTML, CSS, un peu de JS pour la nav active, reveal, et splash.',
+                        'À raconter : comment tu as géré le responsive, les couleurs, et l’accessibilité.',
+                    ],
+                    links: [
+                        { label: 'Démo', href: '#', note: 'Remplacer par ton URL en production.' },
+                        { label: 'Code', href: '#', note: 'Lien vers le repo ou sous-dossier.' },
+                    ],
+                },
+                p2: {
+                    eyebrow: 'Projet 2 — Analyse réseau',
+                    title: 'Capture & analyse de trafic',
+                    sub: 'Mini scénario (ex: navigation HTTP/HTTPS) et analyse dans Wireshark.',
+                    body: [
+                        'Contexte : capture sur un réseau local, identifier les échanges et anomalies.',
+                        'Outils : Wireshark (filtres), éventuellement Nmap pour l’inventaire.',
+                        'À raconter : ce que tu as observé, les filtres utilisés, les conclusions.',
+                    ],
+                    links: [
+                        { label: 'Capture', href: '#', note: 'Lien vers un PDF ou un fichier .pcap (si publiable).' },
+                        { label: 'Notes', href: '#', note: 'Lien vers un compte-rendu (Google Doc ou PDF).' },
+                    ],
+                },
+                p3: {
+                    eyebrow: 'Projet 3 — Script / outil',
+                    title: 'Automatisation simple',
+                    sub: 'Script CLI pour automatiser un petit besoin (tri de fichiers, parse, etc.).',
+                    body: [
+                        'But : automatiser une tâche répétitive (ex: classer des fichiers par type/date).',
+                        'Techno : Python (ou PowerShell/Bash).',
+                        'À raconter : entrée/sortie, validation, et ce que tu as appris.',
+                    ],
+                    links: [
+                        { label: 'Code', href: '#', note: 'Lien vers le script dans le repo.' },
+                    ],
+                },
+            };
+
+            const modal = document.querySelector('[data-modal]');
+            const modalTitle = document.getElementById('modal-title');
+            const modalEyebrow = document.getElementById('modal-eyebrow');
+            const modalSub = document.getElementById('modal-sub');
+            const modalBody = document.getElementById('modal-body');
+            const modalLinks = document.getElementById('modal-links');
+
+            function closeModal() {
+                modal?.classList.remove('is-open');
+                document.body.classList.remove('no-scroll');
+            }
+
+            function openModal(key) {
+                const data = projectData[key];
+                if (!data || !modal) return;
+
+                modalEyebrow.textContent = data.eyebrow;
+                modalTitle.textContent = data.title;
+                modalSub.textContent = data.sub;
+                modalBody.innerHTML = data.body.map((p) => `<p>${p}</p>`).join('');
+                modalLinks.innerHTML = data.links
+                    .map((l) => `<a class="link" href="${l.href}" target="_blank" rel="noreferrer noopener">${l.label}</a><span class="hint">${l.note}</span>`)
+                    .join('');
+
+                modal.classList.add('is-open');
+                document.body.classList.add('no-scroll');
+            }
+
+            document.addEventListener('click', (e) => {
+                const target = e.target;
+                if (!(target instanceof Element)) return;
+
+                // Bloquer les liens # placeholder
+                if (target.matches('a[href="#"]')) {
+                    e.preventDefault();
+                }
+
+                if (target.dataset.openModal) {
+                    e.preventDefault();
+                    openModal(target.dataset.openModal);
+                }
+
+                if (target.dataset.closeModal || target === modal) {
+                    e.preventDefault();
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
         })();
     </script>
 
