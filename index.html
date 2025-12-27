@@ -233,6 +233,8 @@
 
     <script>
         (function () {
+            document.documentElement.classList.add('reveal-ready');
+
             const navLinks = Array.from(document.querySelectorAll('.nav .nav-link'))
                 .filter((a) => a.getAttribute('href') && a.getAttribute('href').startsWith('#'));
             const sectionIds = navLinks
@@ -274,21 +276,20 @@
                 );
 
                 sections.forEach((s) => io.observe(s));
-                return;
-            }
-
-            // Fallback (rare) if IntersectionObserver is not available.
-            function onScroll() {
-                const y = window.scrollY + 120;
-                let current = sections[0].id;
-                for (const section of sections) {
-                    if (section.offsetTop <= y) current = section.id;
+            } else {
+                // Fallback (rare) if IntersectionObserver is not available.
+                function onScroll() {
+                    const y = window.scrollY + 120;
+                    let current = sections[0].id;
+                    for (const section of sections) {
+                        if (section.offsetTop <= y) current = section.id;
+                    }
+                    setActive(current);
                 }
-                setActive(current);
-            }
 
-            window.addEventListener('scroll', onScroll, { passive: true });
-            onScroll();
+                window.addEventListener('scroll', onScroll, { passive: true });
+                onScroll();
+            }
 
             // --- Micro animations (reveal on scroll) ---
             const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -317,6 +318,12 @@
 
             // Fallback: reveal everything.
             revealEls.forEach((el) => el.classList.add('is-visible'));
+
+            // Filet de sécurité: si quelque chose bloque, tout afficher après 1s.
+            setTimeout(() => {
+                document.documentElement.classList.remove('reveal-ready');
+                revealEls.forEach((el) => el.classList.add('is-visible'));
+            }, 1000);
         })();
     </script>
 

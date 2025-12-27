@@ -65,8 +65,16 @@ a:hover {
     outline-offset: 3px;
 }
 
-/* Micro animations (subtiles) */
+/* Micro animations (subtiles)
+   Par défaut, les éléments sont visibles. L’effet n’est appliqué que
+   lorsque la classe .reveal-ready est présente (ajoutée via JS). */
 .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+
+.reveal-ready .reveal {
     opacity: 0;
     transform: translateY(14px);
     filter: blur(2px);
@@ -74,7 +82,7 @@ a:hover {
     will-change: opacity, transform, filter;
 }
 
-.reveal.is-visible {
+.reveal-ready .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
