@@ -14,6 +14,7 @@
             <span class="splash-badge">Portfolio</span>
             <h1 class="splash-title">Ousmane Sidibe</h1>
             <p class="splash-sub">Développement • Réseaux • Cybersécurité</p>
+            <button class="btn splash-cta" type="button" data-splash-close>Entrer</button>
         </div>
     </div>
 
@@ -262,12 +263,18 @@
             // --- Splash intro ---
             const splash = document.querySelector('.splash');
             const page = document.querySelector('.page');
+            const splashBtn = document.querySelector('[data-splash-close]');
+
+            function hideSplash() {
+                if (!splash || !page) return;
+                splash.classList.add('is-hide');
+                page.classList.add('is-visible');
+                setTimeout(() => splash.remove(), 900);
+            }
+
             if (splash && page) {
-                setTimeout(() => {
-                    splash.classList.add('is-hide');
-                    page.classList.add('is-visible');
-                    setTimeout(() => splash.remove(), 900);
-                }, 1200);
+                setTimeout(hideSplash, 1600);
+                splashBtn?.addEventListener('click', hideSplash);
             }
 
             const navLinks = Array.from(document.querySelectorAll('.nav .nav-link'))
