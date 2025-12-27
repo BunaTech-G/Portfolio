@@ -518,6 +518,54 @@ a:hover {
     font-size: 0.92rem;
 }
 
+.list {
+    margin: 10px 0 0;
+    padding-left: 18px;
+    color: rgba(233, 238, 251, 0.80);
+    line-height: 1.6;
+}
+
+.list li {
+    margin-bottom: 6px;
+}
+
+.xp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.xp-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.xp-role {
+    margin: 0;
+    font-weight: 900;
+}
+
+.xp-place {
+    margin: 2px 0 0;
+    color: rgba(233, 238, 251, 0.70);
+    font-weight: 700;
+}
+
+.xp-date {
+    margin: 0;
+    color: rgba(233, 238, 251, 0.65);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.xp-desc {
+    margin: 8px 0 0;
+    color: rgba(233, 238, 251, 0.78);
+    line-height: 1.6;
+}
+
 .chips {
     margin-top: 12px;
     display: flex;
@@ -790,7 +838,8 @@ a:hover {
     }
 
     .two-col,
-    .contact-grid {
+    .contact-grid,
+    .xp-grid {
         grid-template-columns: 1fr;
     }
 
