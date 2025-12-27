@@ -2,47 +2,221 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio de Buna — Informatique, développement et cybersécurité.">
     <title>Buna | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Buna</h1>
-        <p>Étudiant Bac Pro CIEL | Informatique & Cybersécurité</p>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#accueil" aria-label="Retour à l’accueil">
+                <span class="brand-mark">B</span>
+                <span class="brand-text">Buna</span>
+            </a>
+
+            <nav class="nav" aria-label="Navigation principale">
+                <a class="nav-link" href="#accueil">Accueil</a>
+                <a class="nav-link" href="#a-propos">À propos</a>
+                <a class="nav-link" href="#projets">Projets</a>
+                <a class="nav-link" href="#contact">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="btn btn-ghost" href="#contact">Me contacter</a>
+            </div>
+        </div>
     </header>
 
-    <section class="about">
-        <h2>À propos</h2>
-        <p>
-            Je suis étudiant en Bac Pro CIEL, passionné par l’informatique,
-            les réseaux et la cybersécurité.  
-            Je souhaite poursuivre en BTS SIO ou BUT Informatique.
-        </p>
-    </section>
+    <main id="contenu">
+        <section id="accueil" class="hero" aria-label="Introduction">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Étudiant Bac Pro CIEL • Informatique & Cybersécurité</p>
+                    <h1 class="hero-title">
+                        Portfolio<br>
+                        <span class="accent">Développement</span>
+                        &amp; systèmes
+                    </h1>
+                    <p class="hero-subtitle">
+                        Je construis des projets web et des scripts, avec une approche
+                        rigoureuse, claire et orientée résultats.
+                    </p>
 
-    <section class="projects">
-        <h2>Projets</h2>
+                    <div class="hero-cta">
+                        <a class="btn" href="#projets">Voir mes projets</a>
+                        <a class="btn btn-ghost" href="#a-propos">Mon parcours</a>
+                    </div>
 
-        <div class="project">
-            <h3>Portfolio personnel</h3>
-            <p>Site web en HTML et CSS pour présenter mes projets.</p>
+                    <div class="hero-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Objectif</span>
+                            <span class="meta-value">BTS SIO / BUT Informatique</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Focus</span>
+                            <span class="meta-value">Web, réseaux, cybersécurité</span>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="panel" aria-label="Carte de contact rapide">
+                    <h2 class="panel-title">Contact rapide</h2>
+                    <p class="panel-text">Réponse sous 24–48h (selon disponibilité).</p>
+
+                    <div class="panel-actions">
+                        <a class="btn btn-block" href="mailto:buna.dev@email.com">Envoyer un email</a>
+                        <a class="btn btn-ghost btn-block" href="https://github.com/TON-USERNAME" target="_blank" rel="noreferrer noopener">GitHub</a>
+                    </div>
+
+                    <div class="panel-list" role="list">
+                        <div class="panel-row" role="listitem">
+                            <span class="panel-key">Email</span>
+                            <a class="panel-link" href="mailto:buna.dev@email.com">buna.dev@email.com</a>
+                        </div>
+                        <div class="panel-row" role="listitem">
+                            <span class="panel-key">Localisation</span>
+                            <span class="panel-val">France</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="a-propos" class="section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">À propos</h2>
+                    <p class="section-subtitle">Un résumé clair de mon profil et de mes centres d’intérêt.</p>
+                </header>
+
+                <div class="two-col">
+                    <div class="card">
+                        <h3 class="card-title">Mon parcours</h3>
+                        <p class="card-text">
+                            Je suis étudiant en Bac Pro CIEL, passionné par l’informatique,
+                            les réseaux et la cybersécurité. Je souhaite poursuivre en BTS SIO
+                            ou BUT Informatique.
+                        </p>
+                        <p class="card-text">
+                            J’aime apprendre par la pratique, documenter ce que je fais et améliorer
+                            progressivement mes projets.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Compétences</h3>
+                        <div class="chips" aria-label="Compétences principales">
+                            <span class="chip">HTML / CSS</span>
+                            <span class="chip">JavaScript (bases)</span>
+                            <span class="chip">Python (bases)</span>
+                            <span class="chip">Réseaux</span>
+                            <span class="chip">Cybersécurité</span>
+                            <span class="chip">Git / GitHub</span>
+                        </div>
+                        <p class="hint">Tu peux remplacer ces compétences dans le HTML.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projets" class="section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Projets</h2>
+                    <p class="section-subtitle">Quelques réalisations (web, scripts, scolaire, perso).</p>
+                </header>
+
+                <div class="grid">
+                    <article class="project-card">
+                        <h3 class="project-title">Portfolio personnel</h3>
+                        <p class="project-text">One-page en HTML/CSS, design dark, accent orange.</p>
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a class="link" href="#">Démo</a>
+                            <a class="link" href="#">Code</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <h3 class="project-title">BUNA Tech</h3>
+                        <p class="project-text">Site vitrine fictif d’une entreprise informatique.</p>
+                        <div class="tags">
+                            <span class="tag">UI</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                        <div class="project-links">
+                            <a class="link" href="#">Démo</a>
+                            <a class="link" href="#">Code</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <h3 class="project-title">Script / Outil</h3>
+                        <p class="project-text">Automatisation simple (ex: tri de fichiers, parse, etc.).</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">CLI</span>
+                        </div>
+                        <div class="project-links">
+                            <a class="link" href="#">Code</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Contact</h2>
+                    <p class="section-subtitle">Le plus simple : email + GitHub (et autres liens si besoin).</p>
+                </header>
+
+                <div class="contact-grid">
+                    <div class="card">
+                        <h3 class="card-title">Me joindre</h3>
+                        <div class="contact-list">
+                            <a class="contact-item" href="mailto:buna.dev@email.com">
+                                <span class="contact-key">Email</span>
+                                <span class="contact-val">buna.dev@email.com</span>
+                            </a>
+                            <a class="contact-item" href="https://github.com/TON-USERNAME" target="_blank" rel="noreferrer noopener">
+                                <span class="contact-key">GitHub</span>
+                                <span class="contact-val">github.com/TON-USERNAME</span>
+                            </a>
+                        </div>
+                        <div class="stack">
+                            <a class="btn" href="mailto:buna.dev@email.com">Envoyer un message</a>
+                            <a class="btn btn-ghost" href="#projets">Voir les projets</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Message</h3>
+                        <p class="card-text">
+                            Tu peux me contacter pour un stage, une alternance, ou simplement échanger.
+                            (Formulaire à ajouter plus tard en JavaScript si tu veux.)
+                        </p>
+                        <div class="divider"></div>
+                        <p class="hint">Astuce : garde un ton sobre, clair et professionnel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p class="footer-text">© 2025 Buna — Portfolio</p>
+            <a class="footer-link" href="#accueil">Retour en haut</a>
         </div>
-
-        <div class="project">
-            <h3>BUNA Tech</h3>
-            <p>Site vitrine fictif d’une entreprise informatique.</p>
-        </div>
-    </section>
-
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>Email : <a href="mailto:buna.dev@email.com">buna.dev@email.com</a></p>
-        <p>GitHub : <a href="https://github.com/TON-USERNAME" target="_blank">Mon GitHub</a></p>
-    </section>
-
-    <footer>
-        <p>© 2025 Buna</p>
     </footer>
 
 </body>
